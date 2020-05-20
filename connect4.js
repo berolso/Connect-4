@@ -22,12 +22,7 @@ function makeBoard() {
   }
 }
 
-/** makeHtmlBoard: make HTML table and row of column tops. */
-function makeHtmlBoard() {
-  // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
-  let htmlBoard = document.querySelector("#board");
-
-  // TODO: create top row elements and append to 'board'
+function fillTopRow(){
   let top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
@@ -37,7 +32,17 @@ function makeHtmlBoard() {
     headCell.setAttribute("id", x);
     top.append(headCell);
   }
-  htmlBoard.append(top);
+  return top
+}
+
+/** makeHtmlBoard: make HTML table and row of column tops. */
+function makeHtmlBoard() {
+  // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
+  let htmlBoard = document.querySelector("#board");
+
+  // TODO: create top row elements and append to 'board'
+  
+  htmlBoard.append(fillTopRow());
 
   // TODO: create html board matrix with nested loop and give each cell unique id
   for (let y = 0; y < HEIGHT; y++) {
